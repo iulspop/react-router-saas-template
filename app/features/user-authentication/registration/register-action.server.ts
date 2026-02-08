@@ -7,7 +7,7 @@ import {
   registerWithEmailSchema,
   registerWithGoogleSchema,
 } from "./registration-schemas";
-import type { Route } from ".react-router/types/app/routes/_user-authentication+/_anonymous-routes+/+types/register";
+import type { Route } from ".react-router/types/app/routes/_user-authentication/_anonymous-routes/register/+types/_layout";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { retrieveUserAccountFromDatabaseByEmail } from "~/features/user-accounts/user-accounts-model.server";
 import { getErrorMessage } from "~/utils/get-error-message";

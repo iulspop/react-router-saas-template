@@ -8,7 +8,7 @@ import { switchSlugInRoute } from "./layout-helpers.server";
 import { createCookieForOrganizationSwitcherSession } from "./organization-switcher-session.server";
 import { SWITCH_ORGANIZATION_INTENT } from "./sidebar-layout-constants";
 import { switchOrganizationSchema } from "./sidebar-layout-schemas";
-import type { Route } from ".react-router/types/app/routes/_authenticated-routes+/organizations_+/$organizationSlug+/+types/_sidebar-layout";
+import type { Route } from ".react-router/types/app/routes/_authenticated-routes/organizations/$organizationSlug/+types/_layout";
 import { OPEN_CHECKOUT_SESSION_INTENT } from "~/features/billing/billing-constants";
 import { extractBaseUrl } from "~/features/billing/billing-helpers.server";
 import { openCustomerCheckoutSessionSchema } from "~/features/billing/billing-schemas";

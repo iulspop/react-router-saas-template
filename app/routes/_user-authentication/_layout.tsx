@@ -2,7 +2,7 @@ import { IconChevronLeft, IconLayoutList } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { href, Link, Outlet, useMatch } from "react-router";
 
-import type { Route } from "./+types/_user-authentication-layout";
+import type { Route } from "./+types/_layout";
 import { Button } from "~/components/ui/button";
 import { FloatingPaths } from "~/features/user-authentication/floating-paths";
 

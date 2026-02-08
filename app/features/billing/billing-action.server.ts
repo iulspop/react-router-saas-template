@@ -37,7 +37,7 @@ import {
 } from "./stripe-prices-model.server";
 import { updateStripeSubscriptionInDatabaseById } from "./stripe-subscription-model.server";
 import { deleteStripeSubscriptionScheduleFromDatabaseById } from "./stripe-subscription-schedule-model.server";
-import type { Route } from ".react-router/types/app/routes/_authenticated-routes+/organizations_+/$organizationSlug+/settings+/+types/billing";
+import type { Route } from ".react-router/types/app/routes/_authenticated-routes/organizations/$organizationSlug/settings/+types/billing";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { OrganizationMembershipRole } from "~/generated/client";
 import { combineHeaders } from "~/utils/combine-headers.server";

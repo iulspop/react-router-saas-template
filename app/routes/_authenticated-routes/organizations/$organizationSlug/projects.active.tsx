@@ -1,6 +1,6 @@
 import { href } from "react-router";
 
-import type { Route } from "./+types/projects_.active";
+import type { Route } from "./+types/projects.active";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { getPageTitle } from "~/utils/get-page-title.server";
 

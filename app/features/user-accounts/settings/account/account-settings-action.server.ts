@@ -12,7 +12,7 @@ import {
   deleteUserAccountFormSchema,
   updateUserAccountFormSchema,
 } from "./account-settings-schemas";
-import type { Route } from ".react-router/types/app/routes/_authenticated-routes+/settings+/+types/account";
+import type { Route } from ".react-router/types/app/routes/_authenticated-routes/settings/+types/account";
 import { adjustSeats } from "~/features/billing/stripe-helpers.server";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { deleteOrganization } from "~/features/organizations/organizations-helpers.server";

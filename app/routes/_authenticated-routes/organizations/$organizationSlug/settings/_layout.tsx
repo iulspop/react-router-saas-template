@@ -1,6 +1,6 @@
 import { data, href, Outlet } from "react-router";
 
-import type { Route } from "./+types/_organization-settings-layout";
+import type { Route } from "./+types/_layout";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { organizationMembershipContext } from "~/features/organizations/organizations-middleware.server";
 import { SettingsSidebar } from "~/features/organizations/settings/settings-sidebar";

@@ -1,6 +1,6 @@
 import { href, redirect } from "react-router";
 
-import type { Route } from "./+types/register.confirm";
+import type { Route } from "./+types/confirm";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { getValidEmailInviteInfo } from "~/features/organizations/accept-email-invite/accept-email-invite-helpers.server";
 import { getValidInviteLinkInfo } from "~/features/organizations/accept-invite-link/accept-invite-link-helpers.server";

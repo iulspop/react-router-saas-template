@@ -16,7 +16,7 @@ import {
   deleteOrganizationFormSchema,
   updateOrganizationFormSchema,
 } from "./general-settings-schemas";
-import type { Route } from ".react-router/types/app/routes/_authenticated-routes+/organizations_+/$organizationSlug+/settings+/+types/general";
+import type { Route } from ".react-router/types/app/routes/_authenticated-routes/organizations/$organizationSlug/settings/+types/general";
 import { updateStripeCustomer } from "~/features/billing/stripe-helpers.server";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { authContext } from "~/features/user-authentication/user-authentication-middleware.server";

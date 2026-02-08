@@ -6,7 +6,7 @@ import { retrieveActiveInviteLinkFromDatabaseByToken } from "../organizations-in
 import { ACCEPT_INVITE_LINK_INTENT } from "./accept-invite-link-constants";
 import { getInviteLinkToken } from "./accept-invite-link-helpers.server";
 import { createInviteLinkInfoHeaders } from "./accept-invite-link-session.server";
-import type { Route } from ".react-router/types/app/routes/organizations_+/+types/invite-link";
+import type { Route } from ".react-router/types/app/routes/organizations/+types/invite-link";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { requireSupabaseUserExists } from "~/features/user-accounts/user-accounts-helpers.server";
 import { createSupabaseServerClient } from "~/features/user-authentication/supabase.server";

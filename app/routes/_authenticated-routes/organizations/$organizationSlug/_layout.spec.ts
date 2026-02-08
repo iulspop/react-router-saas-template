@@ -3,7 +3,7 @@
 import { data, href } from "react-router";
 import { describe, expect, onTestFinished, test } from "vitest";
 
-import { action } from "./_sidebar-layout";
+import { action } from "./_layout";
 import {
   OPEN_CHECKOUT_SESSION_INTENT,
   priceLookupKeysByTierAndInterval,

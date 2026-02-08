@@ -2,7 +2,7 @@ import type { ShouldRevalidateFunctionArgs, UIMatch } from "react-router";
 import { data, href, Outlet, redirect } from "react-router";
 import { promiseHash } from "remix-utils/promise";
 
-import type { Route } from "./+types/_sidebar-layout";
+import type { Route } from "./+types/_layout";
 import { SidebarInset, SidebarProvider } from "~/components/ui/sidebar";
 import { allLookupKeys } from "~/features/billing/billing-constants";
 import { getCreateSubscriptionModalProps } from "~/features/billing/billing-helpers.server";

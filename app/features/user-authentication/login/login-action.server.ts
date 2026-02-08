@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { anonymousContext } from "../user-authentication-middleware.server";
 import { loginWithEmailSchema, loginWithGoogleSchema } from "./login-schemas";
-import type { Route } from ".react-router/types/app/routes/_user-authentication+/_anonymous-routes+/+types/login";
+import type { Route } from ".react-router/types/app/routes/_user-authentication/_anonymous-routes/login/+types/_layout";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { retrieveUserAccountFromDatabaseByEmail } from "~/features/user-accounts/user-accounts-model.server";
 import { getErrorMessage } from "~/utils/get-error-message";

@@ -4,7 +4,7 @@ import { redirect } from "react-router";
 
 import { requireUserNeedsOnboarding } from "../onboarding-helpers.server";
 import { onboardingOrganizationSchema } from "./onboarding-organization-schemas";
-import type { Route } from ".react-router/types/app/routes/_authenticated-routes+/onboarding+/+types/organization";
+import type { Route } from ".react-router/types/app/routes/_authenticated-routes/onboarding/+types/organization";
 import { uploadOrganizationLogo } from "~/features/organizations/organizations-helpers.server";
 import { saveOrganizationWithOwnerToDatabase } from "~/features/organizations/organizations-model.server";
 import { authContext } from "~/features/user-authentication/user-authentication-middleware.server";

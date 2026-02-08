@@ -9,7 +9,7 @@ import { acceptEmailInvite } from "../organizations-helpers.server";
 import { ACCEPT_EMAIL_INVITE_INTENT } from "./accept-email-invite-constants";
 import { getEmailInviteToken } from "./accept-email-invite-helpers.server";
 import { createEmailInviteInfoHeaders } from "./accept-email-invite-session.server";
-import type { Route } from ".react-router/types/app/routes/organizations_+/+types/email-invite";
+import type { Route } from ".react-router/types/app/routes/organizations/+types/email-invite";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { requireSupabaseUserExists } from "~/features/user-accounts/user-accounts-helpers.server";
 import { createSupabaseServerClient } from "~/features/user-authentication/supabase.server";

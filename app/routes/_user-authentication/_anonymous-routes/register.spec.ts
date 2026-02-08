@@ -1,6 +1,6 @@
 import { describe, expect, onTestFinished, test } from "vitest";
 
-import { action } from "./register";
+import { action } from "./register/_layout";
 import { createPopulatedUserAccount } from "~/features/user-accounts/user-accounts-factories.server";
 import {
   deleteUserAccountFromDatabaseById,

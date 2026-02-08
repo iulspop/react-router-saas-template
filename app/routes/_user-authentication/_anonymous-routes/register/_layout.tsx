@@ -4,7 +4,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { data, Form, href, Link, useNavigation } from "react-router";
 import * as z from "zod";
 
-import type { Route } from "./+types/login";
+import type { Route } from "./+types/_layout";
 import { GeneralErrorBoundary } from "~/components/general-error-boundary";
 import { GooggleIcon } from "~/components/svgs/google-icon";
 import { Button, buttonVariants } from "~/components/ui/button";
@@ -25,18 +25,18 @@ import {
 import { Spinner } from "~/components/ui/spinner";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { getInviteInfoForAuthRoutes } from "~/features/organizations/organizations-helpers.server";
-import { loginAction } from "~/features/user-authentication/login/login-action.server";
-import { loginWithEmailSchema } from "~/features/user-authentication/login/login-schemas";
-import { LoginVerificationAwaiting } from "~/features/user-authentication/login/login-verification-awaiting";
-import { loginIntents } from "~/features/user-authentication/user-authentication-constants";
+import { registerAction } from "~/features/user-authentication/registration/register-action.server";
+import { registerWithEmailSchema } from "~/features/user-authentication/registration/registration-schemas";
+import { RegistrationVerificationAwaiting } from "~/features/user-authentication/registration/registration-verification-awaiting";
+import { registerIntents } from "~/features/user-authentication/user-authentication-constants";
 import { getIsAwaitingEmailConfirmation } from "~/features/user-authentication/user-authentication-helpers";
 import { cn } from "~/lib/utils";
 import { getPageTitle } from "~/utils/get-page-title.server";
 
 z.config({ jitless: true });
 
-export const LOGIN_WITH_EMAIL_INTENT = loginIntents.loginWithEmail;
-export const LOGIN_WITH_GOOGLE_INTENT = loginIntents.loginWithGoogle;
+export const REGISTER_WITH_EMAIL_INTENT = registerIntents.registerWithEmail;
+export const REGISTER_WITH_GOOGLE_INTENT = registerIntents.registerWithGoogle;
 
 export async function loader({ request, context }: Route.LoaderArgs) {
   const i18n = getInstance(context);
@@ -47,7 +47,7 @@ export async function loader({ request, context }: Route.LoaderArgs) {
       inviteLinkInfo: linkData.inviteLinkInfo,
       pageTitle: getPageTitle(
         i18n.t.bind(i18n),
-        "userAuthentication:login.pageTitle",
+        "userAuthentication:register.pageTitle",
       ),
     },
     { headers: linkData.headers },
@@ -59,35 +59,37 @@ export const meta: Route.MetaFunction = ({ loaderData }) => [
 ];
 
 export async function action(args: Route.ActionArgs) {
-  return loginAction(args);
+  return registerAction(args);
 }
 
-export default function LoginRoute({
+export default function RegisterRoute({
   loaderData,
   actionData,
 }: Route.ComponentProps) {
-  const { t } = useTranslation("userAuthentication", { keyPrefix: "login" });
+  const { t } = useTranslation("userAuthentication", {
+    keyPrefix: "register",
+  });
   const { inviteLinkInfo } = loaderData;
 
   const isAwaitingEmailConfirmation =
     getIsAwaitingEmailConfirmation(actionData);
 
-  const { form, fields } = useForm(loginWithEmailSchema, {
+  const { form, fields } = useForm(registerWithEmailSchema, {
     lastResult: actionData?.result,
   });
 
   const navigation = useNavigation();
-  const isLoggingInWithEmail =
-    navigation.formData?.get("intent") === LOGIN_WITH_EMAIL_INTENT;
-  const isLoggingInWithGoogle =
-    navigation.formData?.get("intent") === LOGIN_WITH_GOOGLE_INTENT;
-  const isSubmitting = isLoggingInWithEmail || isLoggingInWithGoogle;
+  const isRegisteringWithEmail =
+    navigation.formData?.get("intent") === REGISTER_WITH_EMAIL_INTENT;
+  const isRegisteringWithGoogle =
+    navigation.formData?.get("intent") === REGISTER_WITH_GOOGLE_INTENT;
+  const isSubmitting = isRegisteringWithEmail || isRegisteringWithGoogle;
 
   if (isAwaitingEmailConfirmation) {
     return (
-      <LoginVerificationAwaiting
+      <RegistrationVerificationAwaiting
         email={actionData?.email}
-        isResending={isLoggingInWithEmail}
+        isResending={isRegisteringWithEmail}
         isSubmitting={isSubmitting}
       />
     );
@@ -100,7 +102,6 @@ export default function LoginRoute({
           <h1 className="font-bold text-2xl">
             {inviteLinkInfo
               ? t("form.joinOrganization", {
-                  creatorName: inviteLinkInfo.creatorName,
                   organizationName: inviteLinkInfo.organizationName,
                 })
               : t("title")}
@@ -115,7 +116,7 @@ export default function LoginRoute({
           </p>
         </div>
 
-        {/* Email Login Form */}
+        {/* Email Registration Form */}
         <Form method="POST" {...form.props}>
           <FieldGroup>
             <Field data-invalid={fields.email.ariaInvalid}>
@@ -143,9 +144,9 @@ export default function LoginRoute({
               <Button
                 name="intent"
                 type="submit"
-                value={LOGIN_WITH_EMAIL_INTENT}
+                value={REGISTER_WITH_EMAIL_INTENT}
               >
-                {isLoggingInWithEmail ? (
+                {isRegisteringWithEmail ? (
                   <>
                     <Spinner /> {t("submitButtonSubmitting")}
                   </>
@@ -159,16 +160,16 @@ export default function LoginRoute({
 
         <FieldSeparator>{t("separator")}</FieldSeparator>
 
-        {/* Google Login Form */}
+        {/* Google Registration Form */}
         <Form method="POST">
           <Field>
             <Button
               name="intent"
               type="submit"
-              value={LOGIN_WITH_GOOGLE_INTENT}
+              value={REGISTER_WITH_GOOGLE_INTENT}
               variant="outline"
             >
-              {isLoggingInWithGoogle ? (
+              {isRegisteringWithGoogle ? (
                 <>
                   <Spinner /> {t("googleButton")}
                 </>
@@ -182,20 +183,51 @@ export default function LoginRoute({
         </Form>
 
         <Field>
+          <FieldDescription className="text-center text-muted-foreground text-sm">
+            <Trans
+              components={{
+                pp: (
+                  <Link
+                    className={cn(
+                      buttonVariants({ variant: "link" }),
+                      "max-h-min p-0 text-muted-foreground underline underline-offset-4 hover:text-primary",
+                    )}
+                    to={href("/privacy-policy")}
+                  />
+                ),
+                tos: (
+                  <Link
+                    className={cn(
+                      buttonVariants({ variant: "link" }),
+                      "max-h-min p-0 text-muted-foreground underline underline-offset-4 hover:text-primary",
+                    )}
+                    to={href("/terms-of-service")}
+                  />
+                ),
+              }}
+              i18nKey="register.legal"
+              ns="userAuthentication"
+            />
+          </FieldDescription>
+        </Field>
+
+        <FieldSeparator />
+
+        <Field>
           <FieldDescription className="text-center">
             <Trans
               components={{
-                signup: (
+                login: (
                   <Link
                     className={cn(
                       buttonVariants({ variant: "link" }),
                       "max-h-min p-0 text-muted-foreground hover:text-primary",
                     )}
-                    to={href("/register")}
+                    to={href("/login")}
                   />
                 ),
               }}
-              i18nKey="login.signupCta"
+              i18nKey="register.loginCta"
               ns="userAuthentication"
             />
           </FieldDescription>

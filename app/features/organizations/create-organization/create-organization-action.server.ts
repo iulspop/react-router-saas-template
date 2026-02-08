@@ -3,7 +3,7 @@ import { createId } from "@paralleldrive/cuid2";
 import { redirect } from "react-router";
 
 import { createOrganizationFormSchema } from "./create-organization-schemas";
-import type { Route } from ".react-router/types/app/routes/_authenticated-routes+/organizations_+/+types/new";
+import type { Route } from ".react-router/types/app/routes/_authenticated-routes/organizations/+types/new";
 import { uploadOrganizationLogo } from "~/features/organizations/organizations-helpers.server";
 import { saveOrganizationWithOwnerToDatabase } from "~/features/organizations/organizations-model.server";
 import { requireAuthenticatedUserExists } from "~/features/user-accounts/user-accounts-helpers.server";

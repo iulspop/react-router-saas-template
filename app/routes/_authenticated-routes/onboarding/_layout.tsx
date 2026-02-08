@@ -2,7 +2,7 @@ import { IconLayoutList } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { Outlet, useMatch } from "react-router";
 
-import type { Route } from "./+types/_onboarding-layout";
+import type { Route } from "./+types/_layout";
 import { TalentMap } from "~/features/onboarding/talent-map";
 import { authMiddleware } from "~/features/user-authentication/user-authentication-middleware.server";
 import { cn } from "~/lib/utils";

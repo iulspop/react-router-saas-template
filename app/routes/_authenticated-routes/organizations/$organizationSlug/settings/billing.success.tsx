@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { data, href, Link } from "react-router";
 
-import type { Route } from "./+types/billing_.success";
+import type { Route } from "./+types/billing.success";
 import { Button } from "~/components/ui/button";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import { organizationMembershipContext } from "~/features/organizations/organizations-middleware.server";

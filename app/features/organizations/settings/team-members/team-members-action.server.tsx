@@ -28,7 +28,7 @@ import {
   changeRoleSchema,
   inviteByEmailSchema,
 } from "./team-members-settings-schemas";
-import type { Route } from ".react-router/types/app/routes/_authenticated-routes+/organizations_+/$organizationSlug+/settings+/+types/members";
+import type { Route } from ".react-router/types/app/routes/_authenticated-routes/organizations/$organizationSlug/settings/+types/members";
 import { adjustSeats } from "~/features/billing/stripe-helpers.server";
 import { getInstance } from "~/features/localization/i18next-middleware.server";
 import type { Prisma } from "~/generated/client";

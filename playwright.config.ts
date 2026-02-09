@@ -1,5 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
+process.env.TZ = "UTC";
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */

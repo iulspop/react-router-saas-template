@@ -39,6 +39,8 @@ function staticCacheHeaders(): Plugin {
   };
 }
 
+process.env.TZ = "UTC";
+
 const rootConfig = defineConfig({
   plugins: [
     tailwindcss(),

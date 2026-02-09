@@ -30,13 +30,14 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: process.env.APP_URL ?? "http://localhost:3000",
+    timezoneId: "UTC",
     trace: process.env.CI ? "on-first-retry" : "retain-on-failure",
   },
 
   /* Run your local dev server before starting the tests */
   webServer: {
     command: process.env.CI ? "npm run start:mocks" : "npm run dev:mocks",
-    env: { NODE_ENV: "test" },
+    env: { NODE_ENV: "test", TZ: "UTC" },
     port: 3000,
     reuseExistingServer: !process.env.CI,
   },

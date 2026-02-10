@@ -26,5 +26,8 @@ stripe-events.txt
 /tests/fixtures/
 /app/tests/mocks/fixtures/
 
+# Image optimization cache
+/data/images/
+
 # Prisma
 /app/generated/
